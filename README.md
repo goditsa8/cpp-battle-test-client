@@ -1,3 +1,52 @@
+# Комментарий к ТЗ
+ТЗ выполнено за 2 вечера и одно утро :)
+Для удобства чтения весь код находится в хэдерах. Старался реализовывать только необходимый минимум, чтобы не раздувать код, опять же для удобства чтения.
+
+Реализовал небольшой фреймворк Entity Component (не путать с ECS). Фреймворк находится в папке **Core**.
+Базовая игровая сущность описана классом **GameObject**, который может содержать компоненты **Component**. Реализует шаблон **Композиция**.
+Геймплейные классы описаны в папке **Game**: **GameComponents** описывает игровые компоненты, **Map** -- игровую карту, **Units** содержит функции создания конкретных юнитов.
+Протестировано на **GCC 12.3.0 x86_64-linux-gnu**.
+
+Пример вывода:
+```
+~/projects/cpp-battle-test-client/build$ ./sw_battle_test ../commands_example.txt 
+Commands:
+CREATE_MAP width=10 height=10 
+SPAWN_WARRIOR unitId=1 x=0 y=0 hp=5 strength=2 
+SPAWN_ARCHER unitId=2 x=9 y=0 hp=10 agility=5 strength=1 range=4 
+MARCH unitId=1 targetX=9 targetY=0 
+MARCH unitId=2 targetX=0 targetY=0 
+SPAWN_WARRIOR unitId=3 x=0 y=9 hp=10 strength=2 
+MARCH unitId=3 targetX=0 targetY=0 
+
+
+Events:
+[0] UNIT_MOVED unitId=1 x=1 y=0 
+[0] UNIT_MOVED unitId=2 x=8 y=0 
+[0] UNIT_MOVED unitId=3 x=0 y=8 
+[1] UNIT_MOVED unitId=1 x=2 y=0 
+[1] UNIT_MOVED unitId=2 x=7 y=0 
+[1] UNIT_MOVED unitId=3 x=0 y=7 
+[2] UNIT_MOVED unitId=1 x=3 y=0 
+[2] UNIT_MOVED unitId=2 x=6 y=0 
+[2] UNIT_MOVED unitId=3 x=0 y=6 
+[3] UNIT_ATTACKED attackerUnitId=2 targetUnitId=1 damage=5 targetHp=0 
+[3] UNIT_DIED unitId=1 
+[3] UNIT_MOVED unitId=2 x=5 y=0 
+[3] UNIT_MOVED unitId=3 x=0 y=5 
+[4] UNIT_MOVED unitId=2 x=4 y=0 
+[4] UNIT_MOVED unitId=3 x=0 y=4 
+[5] UNIT_ATTACKED attackerUnitId=2 targetUnitId=3 damage=5 targetHp=5 
+[5] UNIT_MOVED unitId=2 x=3 y=0 
+[5] UNIT_MOVED unitId=3 x=0 y=3 
+[6] UNIT_ATTACKED attackerUnitId=2 targetUnitId=3 damage=5 targetHp=0 
+[6] UNIT_DIED unitId=3 
+[6] UNIT_MOVED unitId=2 x=2 y=0 
+[7] UNIT_MOVED unitId=2 x=1 y=0 
+[8] UNIT_MOVED unitId=2 x=0 y=0 
+[9] MARCH_ENDED unitId=2 x=0 y=0 
+```
+
 # Цель
 
 Цель задания — продемонстрировать навыки проектирования ПО.  

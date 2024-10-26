@@ -4,6 +4,8 @@
 #include <typeindex>
 #include <unordered_map>
 
+#include "IO/System/details/PrintFieldVisitor.hpp"
+
 namespace sw
 {
 	class EventLog {
